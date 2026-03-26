@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoalKit — Maillots de Foot Premium Meilleur Prix</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f0;
+    --red: #e8272a;
+    --gold: #f5c518;
+    --green: #00c851;
+    --gray: #1a1a1a;
+    --gray2: #2a2a2a;
+    --gray3: #444;
+    --text-muted: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--red);
+    padding: 12px 0;
+  }
+  .nav-inner {
+    max-width: 1300px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; letter-spacing: 3px; color: var(--white);
+    text-decoration: none;
+  }
+  .logo span { color: var(--red); }
+
+  nav a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-left: 28px;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--white); }
+
+  .cart-btn {
+    background: var(--red); color: var(--white);
+    border: none; padding: 10px 20px; cursor: pointer;
+    font-family: 'Barlow', sans-serif; font-weight: 700;
+    font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 8px;
+    transition: background 0.2s;
+  }
+  .cart-btn:hover { background: #c01f22; }
+  .cart-count {
+    background: var(--gold); color: var(--black);
+    border-radius: 50%; width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 800;
+  }
+
+  /* ===== PROMO BAR ===== */
+  .promo-bar {
+    background: var(--red);
+    text-align: center; padding: 8px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-top: 70px;
+    animation: slide-in 0.5s ease;
+  }
+  .promo-bar span { margin: 0 16px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 90vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 60px 24px;
+  }
+  .hero::before {
+    content: 'GOAL';
+    position: absolute; font-family: 'Bebas Neue', sans-serif;
+    font-size: 28vw; color: rgba(232,39,42,0.04);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: -4px;
+  }
+  .hero-content {
+    max-width: 900px; text-align: center; position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold); color: var(--black);
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase; padding: 6px 16px; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .hero h1 .line2 { color: var(--red); display: block; }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--text-muted); max-width: 500px;
+    margin: 0 auto 36px; line-height: 1.6;
+  }
+  .hero-sub strong { color: var(--gold); }
+  .hero-cta {
+    display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+  }
+  .btn-primary {
+    background: var(--red); color: var(--white);
+    padding: 16px 40px; font-weight: 800; font-size: 1rem;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    display: inline-block; transition: transform 0.2s, background 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { background: #ff3336; transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 16px 40px; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    border: 2px solid var(--gray3); display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-secondary:hover { border-color: var(--white); }
+  .hero-stats {
+    display: flex; gap: 40px; justify-content: center;
+    margin-top: 60px; padding-top: 40px;
+    border-top: 1px solid var(--gray2);
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem; color: var(--red); line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+  /* ===== SECTION TITLES ===== */
+  section { padding: 80px 24px; max-width: 1300px; margin: 0 auto; }
+  .section-header { margin-bottom: 48px; }
+  .section-tag {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--red); margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; line-height: 1;
+  }
+  .section-sub { color: var(--text-muted); margin-top: 10px; max-width: 500px; }
+
+  /* ===== FILTERS ===== */
+  .filters {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px;
+  }
+  .filter-btn {
+    background: var(--gray2); color: var(--text-muted);
+    border: 1px solid var(--gray3); padding: 8px 20px;
+    cursor: pointer; font-family: 'Barlow', sans-serif;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--red); color: var(--white); border-color: var(--red);
+  }
+
+  /* ===== PRODUCT GRID ===== */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background: var(--gray);
+    position: relative; overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-6px); }
+  .product-card:hover .product-overlay { opacity: 1; }
+  .product-img {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover; display: block;
+    background: var(--gray2);
+    position: relative; overflow: hidden;
+  }
+  .jersey-preview {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; background: linear-gradient(180deg, var(--gray2), var(--gray));
+    position: relative;
+  }
+  .jersey-preview .club-badge {
+    position: absolute; top: 12px; right: 12px;
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 2px;
+    background: rgba(0,0,0,0.7); padding: 4px 8px; color: var(--gold);
+    text-transform: uppercase;
+  }
+  .badge-new {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--green); color: var(--black);
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 2px;
+    padding: 4px 10px; text-transform: uppercase; z-index: 2;
+  }
+  .badge-promo {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--red); color: var(--white);
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 2px;
+    padding: 4px 10px; text-transform: uppercase; z-index: 2;
+  }
+  .product-overlay {
+    position: absolute; inset: 0;
+    background: rgba(232,39,42,0.85);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .overlay-btn {
+    background: var(--white); color: var(--black);
+    border: none; padding: 14px 28px; cursor: pointer;
+    font-family: 'Barlow', sans-serif; font-weight: 800;
+    font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: transform 0.2s;
+  }
+  .overlay-btn:hover { transform: scale(1.05); }
+  .product-info { padding: 16px; }
+  .product-club {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;
+  }
+  .product-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .product-price-row {
+    display: flex; align-items: center; gap: 10px; justify-content: space-between;
+  }
+  .product-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem; color: var(--red); letter-spacing: 1px;
+  }
+  .product-price-old {
+    font-size: 0.85rem; color: var(--gray3);
+    text-decoration: line-through;
+  }
+  .add-cart {
+    background: var(--red); border: none; color: var(--white);
+    width: 36px; height: 36px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; transition: background 0.2s;
+  }
+  .add-cart:hover { background: #c01f22; }
+  .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 4px; }
+
+  /* ===== WHY US ===== */
+  .why-section {
+    background: var(--gray);
+    padding: 80px 24px;
+  }
+  .why-inner { max-width: 1300px; margin: 0 auto; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px; margin-top: 48px;
+  }
+  .why-card {
+    padding: 32px 24px;
+    border: 1px solid var(--gray2);
+    transition: border-color 0.3s;
+    position: relative;
+  }
+  .why-card:hover { border-color: var(--red); }
+  .why-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 3px; height: 0;
+    background: var(--red); transition: height 0.3s;
+  }
+  .why-card:hover::before { height: 100%; }
+  .why-icon { font-size: 2.5rem; margin-bottom: 16px; }
+  .why-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .why-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+  /* ===== BRANDS ===== */
+  .brands-section { background: var(--gray2); padding: 40px 24px; }
+  .brands-inner {
+    max-width: 1300px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 48px; flex-wrap: wrap;
+  }
+  .brand-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem; letter-spacing: 3px;
+    color: var(--gray3); transition: color 0.2s;
+  }
+  .brand-logo:hover { color: var(--white); }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; margin-top: 48px;
+  }
+  .testimonial-card {
+    background: var(--gray); padding: 28px; border-left: 3px solid var(--red);
+  }
+  .testimonial-text { color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+  .testimonial-author { font-weight: 700; font-size: 0.9rem; }
+  .testimonial-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter {
+    background: var(--red);
+    padding: 80px 24px; text-align: center;
+  }
+  .newsletter h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: 3px; margin-bottom: 12px;
+  }
+  .newsletter p { opacity: 0.85; margin-bottom: 32px; font-size: 1.05rem; }
+  .newsletter-form {
+    display: flex; max-width: 480px; margin: 0 auto; gap: 0;
+  }
+  .newsletter-form input {
+    flex: 1; padding: 16px 20px;
+    background: rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.3);
+    color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+    outline: none;
+  }
+  .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+  .newsletter-form button {
+    background: var(--black); color: var(--white);
+    border: none; padding: 16px 28px; cursor: pointer;
+    font-family: 'Barlow', sans-serif; font-weight: 800;
+    font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .newsletter-form button:hover { background: #1a1a1a; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #050505; padding: 60px 24px 32px;
+    border-top: 1px solid var(--gray2);
+  }
+  .footer-inner {
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px; margin-bottom: 48px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem; letter-spacing: 3px; color: var(--white); margin-bottom: 12px;
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+  .footer-title {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--red); margin-bottom: 16px;
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.875rem; transition: color 0.2s;
+  }
+  footer ul li a:hover { color: var(--white); }
+  .footer-bottom {
+    max-width: 1300px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--gray2); padding-top: 24px;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 0.75rem; color: var(--text-muted);
+  }
+  .payment-icons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .payment-badge {
+    background: var(--gray2); padding: 4px 10px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+
+  /* ===== CART DRAWER ===== */
+  .cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+  .cart-drawer {
+    position: fixed; top: 0; right: -440px; width: 440px; max-width: 100vw;
+    height: 100vh; background: var(--gray); z-index: 201;
+    transition: right 0.4s cubic-bezier(0.22,1,0.36,1);
+    display: flex; flex-direction: column;
+    padding: 32px 28px;
+  }
+  .cart-drawer.open { right: 0; }
+  .cart-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 20px;
+    border-bottom: 1px solid var(--gray2);
+  }
+  .cart-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; letter-spacing: 2px;
+  }
+  .close-btn {
+    background: none; border: none; color: var(--text-muted);
+    font-size: 1.5rem; cursor: pointer; transition: color 0.2s;
+  }
+  .close-btn:hover { color: var(--white); }
+  .cart-items { flex: 1; overflow-y: auto; }
+  .cart-item {
+    display: flex; gap: 16px; padding: 16px 0;
+    border-bottom: 1px solid var(--gray2);
+  }
+  .cart-item-img {
+    width: 70px; height: 80px; background: var(--gray2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; flex-shrink: 0;
+  }
+  .cart-item-name { font-weight: 700; margin-bottom: 4px; }
+  .cart-item-club { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .cart-item-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--red); margin-top: 4px; }
+  .cart-item-remove {
+    background: none; border: none; color: var(--gray3);
+    cursor: pointer; font-size: 0.8rem; margin-left: auto;
+    transition: color 0.2s; align-self: flex-start;
+  }
+  .cart-item-remove:hover { color: var(--red); }
+  .cart-footer { margin-top: 24px; }
+  .cart-total-row {
+    display: flex; justify-content: space-between;
+    padding: 16px 0; border-top: 2px solid var(--white);
+    font-weight: 700; font-size: 1.1rem;
+  }
+  .cart-total-price { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--red); }
+  .checkout-btn {
+    width: 100%; background: var(--red); color: var(--white);
+    border: none; padding: 18px; cursor: pointer;
+    font-family: 'Barlow', sans-serif; font-weight: 800;
+    font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;
+    margin-top: 16px; transition: background 0.2s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .checkout-btn:hover { background: #c01f22; }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: var(--green); color: var(--black);
+    padding: 14px 28px; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; font-size: 0.85rem;
+    z-index: 300; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes slide-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * { animation: fade-up 0.6s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--red); }
+
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .hero h1 { font-size: 3.5rem; }
+    .newsletter-form { flex-direction: column; }
+    .cart-drawer { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo">Goal<span>Kit</span></a>
+    <nav>
+      <a href="#produits">Maillots</a>
+      <a href="#leagues">Ligues</a>
+      <a href="#pourquoi">Garanties</a>
+      <a href="#avis">Avis</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Panier
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  <span>🔥 LIVRAISON OFFERTE DÈS 49€</span>
+  <span>|</span>
+  <span>⚡ PRIX IMBATTABLES GARANTIS</span>
+  <span>|</span>
+  <span>✅ QUALITÉ PREMIUM GARANTIE</span>
+</div>
+
+<!-- HERO -->
+<section style="padding:0; margin:0; max-width:100%;">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🏆 Meilleurs Prix — Qualité Premium</div>
+      <h1>Maillots<span class="line2">De Légende</span></h1>
+      <p class="hero-sub">Tous les grands clubs. Toutes les saisons.<br>
+        Qualité premium à <strong>partir de 12,90€</strong> — livraison express.</p>
+      <div class="hero-cta">
+        <a href="#produits" class="btn-primary">Voir les maillots</a>
+        <a href="#pourquoi" class="btn-secondary">Nos garanties</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Modèles</div></div>
+        <div class="stat"><div class="stat-num">12.9€</div><div class="stat-label">Prix départ</div></div>
+        <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Livraison FR</div></div>
+        <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Clients</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <div class="brands-inner">
+    <div class="brand-logo">Real Madrid</div>
+    <div class="brand-logo">Barcelona</div>
+    <div class="brand-logo">PSG</div>
+    <div class="brand-logo">Man City</div>
+    <div class="brand-logo">Liverpool</div>
+    <div class="brand-logo">Bayern</div>
+    <div class="brand-logo">Juventus</div>
+    <div class="brand-logo">Arsenal</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="produits">
+  <div class="section-header">
+    <div class="section-tag">🔥 Meilleures Ventes</div>
+    <h2 class="section-title">Nos Maillots</h2>
+    <p class="section-sub">Qualité premium sur chaque maillot. Prix imbattables toute l'année.</p>
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">Tous</button>
+    <button class="filter-btn" onclick="filterProducts('liga', this)">La Liga</button>
+    <button class="filter-btn" onclick="filterProducts('ligue1', this)">Ligue 1</button>
+    <button class="filter-btn" onclick="filterProducts('premier', this)">Premier League</button>
+    <button class="filter-btn" onclick="filterProducts('serie', this)">Serie A</button>
+    <button class="filter-btn" onclick="filterProducts('bundesliga', this)">Bundesliga</button>
+    <button class="filter-btn" onclick="filterProducts('national', this)">Équipes Nationales</button>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- WHY US -->
+<div class="why-section" id="pourquoi">
+  <div class="why-inner">
+    <div class="section-header">
+      <div class="section-tag">💎 Pourquoi Nous</div>
+      <h2 class="section-title">Nos Garanties</h2>
+      <p class="section-sub">Nous sélectionnons les meilleurs ateliers textiles pour vous offrir des maillots de qualité supérieure au meilleur prix.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏭</div>
+        <div class="why-title">Sourcing Exclusif</div>
+        <div class="why-text">Partenariats directs avec des ateliers textiles sélectionnés pour leur excellence. Aucun intermédiaire, prix net.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">✅</div>
+        <div class="why-title">Qualité Premium</div>
+        <div class="why-text">Tissus techniques haut de gamme. Broderies soignées. Numérotation floquée. Contrôle qualité strict à chaque commande.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <div class="why-title">Livraison Express</div>
+        <div class="why-text">Expédition depuis notre entrepôt France en 24-48h. Suivi en temps réel. Retours gratuits sous 30 jours.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💳</div>
+        <div class="why-title">Paiement Sécurisé</div>
+        <div class="why-text">CB, PayPal, virement. Paiement en 3x sans frais dès 30€. Données cryptées SSL 256 bits.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💬</div>
+        <div class="why-title">SAV 7j/7</div>
+        <div class="why-text">Notre équipe est disponible 7j/7 par chat, email et téléphone. Réponse garantie sous 2h ouvrées.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏷️</div>
+        <div class="why-title">Meilleur Prix</div>
+        <div class="why-text">Vous trouvez moins cher ? On s'aligne. Garantie prix le plus bas du marché sur tous nos produits.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="avis">
+  <div class="section-header">
+    <div class="section-tag">⭐ Avis Clients</div>
+    <h2 class="section-title">Ils Nous Font Confiance</h2>
+    <p class="section-sub">Plus de 50 000 clients satisfaits en France et en Europe.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Qualité incroyable pour le prix. J'ai commandé le maillot du Real Madrid, il est parfait. Livraison en 2 jours. Je recommande à 100% !"</p>
+      <div class="testimonial-author">Karim B.</div>
+      <div class="testimonial-meta">Paris — Maillot Real Madrid 2024/25</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"J'ai pris 3 maillots pour mes fils. Ils sont ravis. La broderie est nickel, les couleurs sont fidèles. Prix imbattable, sérieusement."</p>
+      <div class="testimonial-author">Sylvie M.</div>
+      <div class="testimonial-meta">Lyon — Maillots PSG & Man City</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★☆</div>
+      <p class="testimonial-text">"Site fiable, j'avais un doute au début mais le colis est arrivé en 3 jours bien emballé. Maillot Barça top. Un peu déçu qu'il n'y ait pas plus de personnalisation."</p>
+      <div class="testimonial-author">Antoine D.</div>
+      <div class="testimonial-meta">Marseille — Maillot FC Barcelona</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Commande reçue rapidement, emballage soigné. Le maillot de l'équipe de France est superbe ! Je vais commander les autres couleurs."</p>
+      <div class="testimonial-author">Nathalie K.</div>
+      <div class="testimonial-meta">Bordeaux — Maillot France 2024</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Revendeur depuis 2 ans, mes clients adorent. La qualité est constante, les délais sont respectés. Tarifs dégressifs très intéressants pour les grosses commandes."</p>
+      <div class="testimonial-author">Marc T.</div>
+      <div class="testimonial-meta">Toulouse — Revendeur pro</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"J'ai comparé avec d'autres sites, GoalKit propose vraiment les prix les plus bas. Et la qualité est au rendez-vous. Service client très réactif aussi !"</p>
+      <div class="testimonial-author">Rachid A.</div>
+      <div class="testimonial-meta">Lille — Maillot Liverpool & Bayern</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>-20% sur votre 1ère commande</h2>
+  <p>Inscrivez-vous et recevez votre code promo immédiatement</p>
+  <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+    <input type="email" placeholder="Votre email..." required>
+    <button type="submit">Je veux -20%</button>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Goal<span>Kit</span></div>
+      <p class="footer-desc">Votre spécialiste maillots de foot au meilleur prix. Qualité premium, livraison express, satisfaction garantie.</p>
+    </div>
+    <div>
+      <div class="footer-title">Navigation</div>
+      <ul>
+        <li><a href="#produits">Tous les maillots</a></li>
+        <li><a href="#">Ligues & Clubs</a></li>
+        <li><a href="#">Équipes nationales</a></li>
+        <li><a href="#">Flocage personnalisé</a></li>
+        <li><a href="#">Commandes en gros</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Aide</div>
+      <ul>
+        <li><a href="#">Guide des tailles</a></li>
+        <li><a href="#">Suivi de commande</a></li>
+        <li><a href="#">Retours & échanges</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Contact</div>
+      <ul>
+        <li><a href="#">📧 <span class="__cf_email__" data-cfemail="d8bbb7b6acb9bbac98bfb7b9b4b3b1acf6beaa">[email&#160;protected]</span></a></li>
+        <li><a href="#">📞 01 23 45 67 89</a></li>
+        <li><a href="#">💬 Chat en ligne 7j/7</a></li>
+        <li style="margin-top:16px;"><a href="#">Instagram</a></li>
+        <li><a href="#">TikTok</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 GoalKit — Tous droits réservés</span>
+    <div class="payment-icons">
+      <span class="payment-badge">Visa</span>
+      <span class="payment-badge">Mastercard</span>
+      <span class="payment-badge">PayPal</span>
+      <span class="payment-badge">3x CB</span>
+      <span class="payment-badge">SSL</span>
+    </div>
+    <span>
+      <a href="#" style="color:var(--text-muted);text-decoration:none;margin-right:16px;">Mentions légales</a>
+      <a href="#" style="color:var(--text-muted);text-decoration:none;">CGV</a>
+    </span>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">Mon Panier</div>
+    <button class="close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p style="color:var(--text-muted);text-align:center;margin-top:40px;">Votre panier est vide</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>TOTAL</span>
+      <span class="cart-total-price" id="cartTotal">0,00 €</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Passer la commande →</button>
+    <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:10px;">🔒 Paiement 100% sécurisé • Livraison offerte dès 49€</p>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Ajouté au panier !</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ===== PRODUCTS DATA =====
+  const products = [
+    { id:1, club:'Real Madrid', name:'Domicile 2024/25', price:14.90, oldPrice:89.99, emoji:'⚪', category:'liga', badge:'new', stars:5 },
+    { id:2, club:'Barcelona FC', name:'Domicile 2024/25', price:14.90, oldPrice:99.99, emoji:'🔵', category:'liga', badge:'promo', stars:5 },
+    { id:3, club:'PSG', name:'Domicile 2024/25', price:12.90, oldPrice:89.99, emoji:'🔵', category:'ligue1', badge:'new', stars:5 },
+    { id:4, club:'Manchester City', name:'Domicile 2024/25', price:15.90, oldPrice:99.99, emoji:'🩵', category:'premier', badge:null, stars:4 },
+    { id:5, club:'Liverpool FC', name:'Domicile 2024/25', price:15.90, oldPrice:89.99, emoji:'🔴', category:'premier', badge:'promo', stars:5 },
+    { id:6, club:'Bayern Munich', name:'Domicile 2024/25', price:14.90, oldPrice:89.99, emoji:'❤️', category:'bundesliga', badge:null, stars:5 },
+    { id:7, club:'Juventus', name:'Domicile 2024/25', price:13.90, oldPrice:84.99, emoji:'⬛', category:'serie', badge:'new', stars:4 },
+    { id:8, club:'Arsenal FC', name:'Domicile 2024/25', price:15.90, oldPrice:89.99, emoji:'🔴', category:'premier', badge:null, stars:5 },
+    { id:9, club:'France', name:'Equipe Nationale 2024', price:16.90, oldPrice:109.99, emoji:'🇫🇷', category:'national', badge:'promo', stars:5 },
+    { id:10, club:'Atletico Madrid', name:'Domicile 2024/25', price:13.90, oldPrice:84.99, emoji:'🔴', category:'liga', badge:null, stars:4 },
+    { id:11, club:'Inter Milan', name:'Domicile 2024/25', price:13.90, oldPrice:84.99, emoji:'🔵', category:'serie', badge:'new', stars:5 },
+    { id:12, club:'Borussia Dortmund', name:'Domicile 2024/25', price:14.90, oldPrice:84.99, emoji:'💛', category:'bundesliga', badge:null, stars:4 },
+    { id:13, club:'Marseille OM', name:'Domicile 2024/25', price:12.90, oldPrice:84.99, emoji:'⚪', category:'ligue1', badge:'promo', stars:5 },
+    { id:14, club:'Brésil', name:'Equipe Nationale 2024', price:16.90, oldPrice:109.99, emoji:'🇧🇷', category:'national', badge:null, stars:5 },
+    { id:15, club:'Chelsea FC', name:'Domicile 2024/25', price:15.90, oldPrice:89.99, emoji:'🔵', category:'premier', badge:'new', stars:4 },
+    { id:16, club:'AC Milan', name:'Domicile 2024/25', price:13.90, oldPrice:84.99, emoji:'❤️', category:'serie', badge:null, stars:5 },
+  ];
+
+  let cart = [];
+  let activeFilter = 'all';
+
+  function renderProducts(filter) {
+    const grid = document.getElementById('productsGrid');
+    const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+    grid.innerHTML = filtered.map(p => `
+      <div class="product-card" data-cat="${p.category}">
+        <div class="product-img">
+          <div class="jersey-preview">
+            ${p.badge === 'new' ? `<div class="badge-new">Nouveau</div>` : p.badge === 'promo' ? `<div class="badge-promo">Promo</div>` : ''}
+            <span style="font-size:5rem">${p.emoji}</span>
+            <div class="club-badge">${p.club}</div>
+          </div>
+          <div class="product-overlay">
+            <button class="overlay-btn" onclick="addToCart(${p.id})">+ Ajouter</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="stars">${'★'.repeat(p.stars)}${'☆'.repeat(5-p.stars)}</div>
+          <div class="product-club">${p.club}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-price-row">
+            <div>
+              <div class="product-price">${p.price.toFixed(2).replace('.',',')} €</div>
+              <div class="product-price-old">Prix boutique: ${p.oldPrice.toFixed(2).replace('.',',')} €</div>
+            </div>
+            <button class="add-cart" onclick="addToCart(${p.id})">+</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterProducts(cat, btn) {
+    activeFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(cat);
+  }
+
+  function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    const existing = cart.find(c => c.id === id);
+    if (existing) { existing.qty++; } else { cart.push({...product, qty:1}); }
+    updateCartUI();
+    showToast();
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(c => c.id !== id);
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    const count = cart.reduce((s,c) => s+c.qty, 0);
+    document.getElementById('cartCount').textContent = count;
+    const total = cart.reduce((s,c) => s + c.price * c.qty, 0);
+    document.getElementById('cartTotal').textContent = total.toFixed(2).replace('.',',') + ' €';
+    const itemsEl = document.getElementById('cartItems');
+    if (cart.length === 0) {
+      itemsEl.innerHTML = '<p style="color:var(--text-muted);text-align:center;margin-top:40px;">Votre panier est vide</p>';
+      return;
+    }
+    itemsEl.innerHTML = cart.map(c => `
+      <div class="cart-item">
+        <div class="cart-item-img">${c.emoji}</div>
+        <div>
+          <div class="cart-item-name">${c.name}</div>
+          <div class="cart-item-club">${c.club}</div>
+          <div class="cart-item-price">${(c.price*c.qty).toFixed(2).replace('.',',')} €</div>
+          <div style="font-size:0.75rem;color:var(--text-muted)">Qté: ${c.qty}</div>
+        </div>
+        <button class="cart-item-remove" onclick="removeFromCart(${c.id})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  function openCart() {
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartDrawer').classList.add('open');
+  }
+  function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartDrawer').classList.remove('open');
+  }
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  function checkout() {
+    if (cart.length === 0) { alert('Votre panier est vide !'); return; }
+    alert('🎉 Commande confirmée ! Vous serez redirigé vers le paiement sécurisé.');
+    cart = [];
+    updateCartUI();
+    closeCart();
+  }
+
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+ 
