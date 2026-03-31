@@ -942,19 +942,30 @@ document.getElementById('checkoutBtn').addEventListener('click', function(){
 // 1. Stripe : va sur dashboard.stripe.com → Payment Links → créer un lien
 // 2. PayPal : va sur paypal.com/merchantapps → créer un bouton paiement
 // ================================================================
-var STRIPE_LINK  = 'https://buy.stripe.com/VOTRE_LIEN_STRIPE';  // <-- remplace
 var PAYPAL_LINK  = 'https://www.paypal.com/ncp/payment/VOTRE_LIEN_PAYPAL'; // <-- remplace
 var IBAN         = 'FR76 2823 3000 0180 0119 4916 734'; // <-- ton IBAN
 // ================================================================
 
 function payWith(method){
+ var PAYPAL_LINK   = 'https://www.paypal.com/ncp/payment/VOTRE_LIEN_PAYPAL'; // <-- remplace
+var IBAN          = 'FR76 2823 3000 0180 0119 4916 734'; // <-- ton IBAN
+
   if(method === 'stripe'){
-    if(STRIPE_LINK.includes('VOTRE')){
-      alert('⚙️ Configure ton lien Stripe dans le code (variable STRIPE_LINK).\n\nGo sur : dashboard.stripe.com → Payment Links');
-      return;
-    }
-    window.open(STRIPE_LINK, '_blank');
-  }
+    var cartItems = cart.map(function(item){
+      return {
+        name: item.name + ' - Taille ' + item.size + (item.flocage ? ' + Flocage' : ''),
+        price: item.price,
+        quantity: item.quantity || 1
+      };
+    });
+    fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: cartItems })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){ if(data.url) window.location.href = data.url; else alert('Erreur paiement'); })
+    .catch(function(){ alert('Erreur connexion'); });
   else if(method === 'paypal'){
     if(PAYPAL_LINK.includes('VOTRE')){
       alert('⚙️ Configure ton lien PayPal dans le code (variable PAYPAL_LINK).\n\nGo sur : paypal.com/merchantapps');
