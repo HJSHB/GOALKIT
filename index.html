@@ -956,7 +956,7 @@ function payWith(method){
         quantity: item.qty || 1
       };
     });
-    fetch('/.netlify/functions/create-checkout', {
+    fetch('https://soft-dasik-736515.netlify.app/.netlify/functions/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: cartItems })
